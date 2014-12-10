@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Register</h1>
+
+	<form name="form" novalidate ng-controller="HeaderCtrl">
+
+        <div class="alert alert-danger" ng-show="form.$invalid && form.$dirty">
+	        <strong>Please correct the following errors:</strong>
+	        <ul>
+	        	<li ng-show="form.firstName.$error.required">First Name is required</li>
+	        	<li ng-show="form.firstName.$error.maxlength">First Name exceed 50 characters</li>
+	        	<li ng-show="form.lastName.$error.required">Last Name is required</li>
+	        	<li ng-show="form.lastName.$error.maxlength">Last Name exceed 50 characters</li>
+	        	<li ng-show="form.username.$error.required">Username is required</li>
+	        	<li ng-show="form.username.$error.email">Username is a email</li>
+	        	<li ng-show="form.username.$error.maxlength">Username exceed 100 characters</li>
+	        	<li ng-show="form.password.$error.required">Password is a required</li>
+	        	<li ng-show="form.verifyPassword.$error.required">Repeat Password is required</li>
+	        	<li ng-show="form.verifyPassword.$error.equal">Passwords do not match</li>
+	        </ul>
+        </div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="firstName" ng-maxlength="50" placeholder="First Name" required autofocus ng-model="user.first_name" />
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" name="lastName" ng-maxlength="50" placeholder="Last Name" required ng-model="user.last_name" />
+		</div>
+
+		<div class="form-group">
+			<input type="email" class="form-control" name="username" ng-maxlength="100" placeholder="Username (email)" required ng-model="user.username" />
+		</div>
+
+		<div class="form-group">
+			<input type="password" class="form-control" name="password" placeholder="Password" required ng-model="user.password" />
+		</div>
+
+		<div class="form-group">
+			<input type="password" class="form-control" name="verifyPassword" placeholder="Repeat Password" required ng-model="user.verify_password" validate-equals="user.password"/>
+		</div>
+
+        <div class="btn-group">
+           	<button ng-click="cancel()" class="btn btn-warning cancel" value="Cancel" title="Cancel">Cancel</button>
+           	<button type="submit" ng-click="signup()" class="btn btn-primary" value="Register" title="Register" ng-disabled='form.$invalid'>Register</button>
+        </div>
+    </form>
+</div>

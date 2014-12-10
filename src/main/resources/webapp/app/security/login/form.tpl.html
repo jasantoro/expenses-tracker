@@ -1,0 +1,41 @@
+<form name="form" novalidate class="login-form">
+    <div class="modal-header">
+        <h4>Sign in</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning" ng-show="authReason">
+            {{authReason}}
+        </div>
+        <div class="alert alert-error" ng-show="authError">
+            {{authError}}
+        </div>
+
+        <div class="alert alert-danger" ng-show="form.$invalid && form.$dirty">
+	        <strong>Please correct the following errors:</strong>
+	        <ul>
+	        	<li ng-show="form.login.$error.required">Username is required</li>
+	        	<li ng-show="form.login.$error.email">Username is a email</li>
+	        	<li ng-show="form.login.$error.maxlength">Username exceed 100 characters</li>
+	        	<li ng-show="form.pass.$error.required">Password is a email</li>
+	        </ul>
+        </div>
+
+        <div class="alert alert-info">Please enter your login details</div>
+
+		<div class="form-group">
+	        <input name="login" type="email" ng-model="user.email" ng-maxlength="100" placeholder="Username" required autofocus>
+		</div>
+
+		<div class="form-group">
+	        <input name="pass" type="password" ng-model="user.password" placeholder="Password" required>
+		</div>
+
+    </div>
+    <div class="modal-footer">
+    	<div class="btn-group">
+	        <button class="btn btn-primary login" ng-click="login()" ng-disabled='form.$invalid'>Sign in</button>
+	        <button class="btn clear" ng-click="clearForm()">Clear</button>
+	        <button class="btn btn-warning cancel" ng-click="cancelLogin()">Cancel</button>
+    	</div>
+    </div>
+</form>

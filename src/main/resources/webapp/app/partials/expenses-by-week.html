@@ -1,0 +1,46 @@
+<div class="container">
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<caption>Expenses from {{expensesAggregator.start_date | date:'longDate'}} to {{expensesAggregator.end_date | date:'longDate'}}</caption>
+		<thead>
+			<tr>
+				<th class="span-20-percent">Day</th>
+				<th class="span-20-percent">Total</th>
+				<th class="span-20-percent">Time</th>
+				<th class="span-20-percent">Amount</th>
+				<th class="span-20-percent">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="day in ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']">
+				<td class="span-20-percent">{{day | capitalize}}</td>
+				<td class="span-20-percent">{{expensesAggregator[day + '_expenses'].total_amount | currency}}</td>
+				<td colspan="3">
+					<span ng-show="!expensesAggregator[day + '_expenses'].expenses.length">No expenses</span>
+					<table style="width:100%;" ng-show="expensesAggregator[day + '_expenses'].expenses.length">
+						<tbody>
+							<tr data-ng-repeat="expense in expensesAggregator[day + '_expenses'].expenses">
+								<td class="span-20-percent" style="border-left: 0;">{{expense.date | date:"HH:mm:ss"}}</td>
+								<td class="span-20-percent" style="border-left: 0;">{{expense.amount | currency}}</td>
+								<td class="span-20-percent" style="border-left: 0;">{{expense.description}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td><strong>Week Total Amount</strong></td>
+				<td colspan="4">{{expensesAggregator.week_total_amount | currency }}</td>
+			</tr>
+			<tr>
+				<td><strong>Per day Average</strong></td>
+				<td colspan="4">{{expensesAggregator.per_day_average_amount | currency }}</td>
+			</tr>
+		</tfoot>
+	</table>
+	<ul class="pagination">
+		<li><a href ng-click="prevPage()">Previous Week</a></li>
+		<li ng-class="{disabled: nextPageDisabled()}"><a href ng-click="nextPage()">Next Week</a></li>
+	</ul>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>Create a new expense</h1>
+
+	<form name="form" novalidate ng-controller="ExpenseCreationCtrl" rc-submit="createNewExpense()">
+	
+        <div class="alert alert-danger" ng-show="form.$invalid && form.$dirty">
+	        <strong>Please correct the following errors:</strong>
+	        <ul>
+	        	<li ng-show="form.description.$error.required">Description is required</li>
+	        	<li ng-show="form.description.$error.maxlength">Description exceed 140 characters</li>
+	        	<li ng-show="form.date.$error.required">Date is required</li>
+	        	<li ng-show="form.amount.$error.required">Amount is required</li>
+	        	<li ng-show="form.amount.$error.number">Amount should be numeric</li>
+	        	<li ng-show="form.comment.$error.required">Comment is required</li>
+	        	<li ng-show="form.comment.$error.maxlength">Comment exceed 1000 characters</li>
+	        </ul>
+        </div>
+	
+		<div class="form-group">
+			<input type="text" class="form-control" name="description" ng-maxlength="140" placeholder="Description" required ng-model="expense.description" />
+		</div>
+
+		<div class="form-group">
+			<input type="datetime-local" class="form-control" name="date" required ng-model="expense.date" min="2014-01-01T00:00:00"/>
+		</div>
+
+		<div class="form-group">
+			<input type="number" step="0.01" class="form-control" name="amount" placeholder="Amount" required ng-model="expense.amount" />
+		</div>
+
+		<div class="form-group">
+			<textarea class="form-control" name="comment" placeholder="Comment" ng-maxlength="1000" required ng-model="expense.comment"></textarea>
+		</div>
+
+        <div class="btn-group">
+           	<button ng-click="cancel()" class="btn btn-warning cancel" value="Cancel" title="Cancel">Cancel</button>
+           	<button type="submit" ng-click="createNewExpense()" ng-disabled='form.$invalid' class="btn btn-primary" value="Create" title="Create a new Expense">Create</button>
+        </div>
+    </form>
+</div>

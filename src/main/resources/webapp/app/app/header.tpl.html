@@ -1,0 +1,19 @@
+<div class="navbar" ng-controller="HeaderCtrl">
+    <div class="navbar-inner">
+        <a class="brand" ng-click="home()">Expenses Tracker</a>
+
+        <ul class="nav" ng-show="isAuthenticated()">
+            <li ng-class="{active:isNavbarActive('expenses')}"><a href="#/expenses">Expenses</a></li>
+            <li ng-class="{active:isNavbarActive('expenses-by-week')}"><a href="#/expenses-by-week">Expenses by Week</a></li>
+            <li ng-class="{active:isNavbarActive('new-expense')}"><a href="#/new-expense">New Expense</a></li>
+        </ul>
+        <ul class="nav" ng-hide="isAuthenticated()">
+            <li ng-class="{active:isNavbarActive('signup')}"><a href="#/signup">Signup</a></li>
+        </ul>
+        <ul class="nav pull-right" ng-show="hasPendingRequests()">
+            <li class="divider-vertical"></li>
+            <li><a href="#"><img src="img/spinner.gif"></a></li>
+        </ul>
+        <login-toolbar></login-toolbar>
+    </div>
+</div>

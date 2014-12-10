@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+		<link rel="stylesheet" type="text/css" href="angular-app.css"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="angular-route.js"></script>
+		<script type="text/javascript" src="angular-resource.js"></script>
+		<script type="text/javascript" src="ui-bootstrap-tpls-0.12.0.js"></script>
+		
+		<script type="text/javascript" src="app/app.js"></script>
+		
+		<script type="text/javascript" src="app/users/uniqueEmail.js"></script>
+		<script type="text/javascript" src="app/users/validateEquals.js"></script>
+		<script type="text/javascript" src="app/users/resources.js"></script>
+		
+		<script type="text/javascript" src="app/expenses/resources.js"></script>
+		<script type="text/javascript" src="app/expenses/controllers.js"></script>
+		
+		<script type="text/javascript" src="directives/gravatar.js"></script>
+		<script type="text/javascript" src="directives/modal.js"></script>
+		
+		<script type="text/javascript" src="services/breadcrumbs.js"></script>
+		<script type="text/javascript" src="services/exceptionHandler.js"></script>
+		<script type="text/javascript" src="services/httpRequestTracker.js"></script>
+		<script type="text/javascript" src="services/i18nNotifications.js"></script>
+		<script type="text/javascript" src="services/localizedMessages.js"></script>
+		<script type="text/javascript" src="services/notifications.js"></script>
+		
+		<script type="text/javascript" src="security/authorization.js"></script>
+		<script type="text/javascript" src="security/interceptor.js"></script>
+		<script type="text/javascript" src="security/retryQueue.js"></script>
+		<script type="text/javascript" src="security/security.js"></script>
+		<script type="text/javascript" src="security/index.js"></script>
+		<script type="text/javascript" src="security/login/login.js"></script>
+		<script type="text/javascript" src="security/login/LoginFormController.js"></script>
+		<script type="text/javascript" src="security/login/toolbar.js"></script>
+		
+		<script type="text/javascript" src="filters/filters.js"></script>
+		
+		<title>Expenses Tracker App</title>
+	</head>
+
+	<body ng-controller="AppCtrl">
+		<div class="content-wrap">
+			<div ng-include="'app/header.tpl.html'"></div>
+			<div ng-include="'app/notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>
+			<div ng-view class="container-fluid"></div>
+		</div>
+	</body>
+</html>

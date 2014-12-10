@@ -1,0 +1,19 @@
+{
+  "apiVersion": "1.0.0",
+  "swaggerVersion": "1.2",
+  "apis": [
+    {
+      "path": "/expenses",
+      "description": "Operations about expenses"
+    },
+    {
+      "path": "/user",
+      "description": "Operations about user"
+    }
+  ],
+  "info": {
+    "title": "Expenses Tracker API",
+    "description": "Documentation of the API of Expenses Tracker. Here you can find the different exposes services and how to call each of them",
+    "contact": "jasantoro@gmail.com"
+  }
+}
